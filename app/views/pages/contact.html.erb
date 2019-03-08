@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+ <html>
+  <head>
+    <title>Lisa Dolley Photographie</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <%= stylesheet_link_tag "application" %>
+  </head>
+  <body class="landing is-preload">
+
+    <!-- Page Wrapper -->
+      <div id="page-wrapper">
+
+        <!-- Header -->
+          <header id="header" class="alt">
+            <h1><a href="index.html">Lisa Dolley Photographie</a></h1>
+            <nav id="nav">
+              <ul>
+                <li class="special">
+                  <a href="#menu" class="menuToggle"><span>Menu</span></a>
+                  <div id="menu">
+                    <ul>
+                      <li><a <%= link_to "ACCUEIL", home_path %></a></li>
+                      <li><a <%= link_to "MARIAGE", wedding_path %></a></li>
+                      <li><a <%= link_to "PORTRAIT", portrait_path %></a></li>
+                      <li><a <%= link_to "A PROPOS", about_path %></a></li>
+                      <li><a <%= link_to "CONTACT", contact_path%></a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+          </header>
+          <section id="one" class="wrapper style1 special">
+<div class="container">  
+  <form id="contact" action="" method="post">
+    <h3> CONTACT</h3>
+    <h4>Contactez-nous aujourd'hui, et recevez une réponse en 24 heures!</h4>
+    <fieldset>
+      <input placeholder="Votre nom" type="text" tabindex="1" required autofocus>
+    </fieldset>
+    <fieldset>
+      <input placeholder="Votre adresse e-mail" type="email" tabindex="2" required>
+    </fieldset>
+    <fieldset>
+      <textarea placeholder="Tapez votre message ici..." tabindex="5" required></textarea>
+    </fieldset>
+    <fieldset>
+      <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Envoyer</button>
+    </fieldset>
+  </form>
+
+  <footer id="footer">
+            <ul class="icons">
+              <li><a href="https://www.facebook.com/Lisa-Dolley-Photographie-1374608542796726/" title="Suivez-moi sur facebook !"><%= image_tag "Fb.png", alt: "Fb", width: 64, height: 64%></a></li>
+              <li><a href="https://www.instagram.com/lisa__dolley/" title="Suivez-moi sur instagram !"><%= image_tag "Instagram.png", alt: "Instagram", width: 64, height: 64 %></a></li>
+              <li><a href="https://www.linkedin.com/in/lisa-dolley-991a99175/" title="Suivez-moi sur linkedin !"><%= image_tag "Linkdln.png", alt: "Linkdln", width: 64, height: 64 %></a></li>
+              
+              
+            </ul>
+ 
+  
+</div>
+</html>
+<script language="JavaScript">
+var frmvalidator  = new Validator("contactform");
+frmvalidator.addValidation("name","req","Please provide your name");
+frmvalidator.addValidation("email","req","Please provide your email");
+frmvalidator.addValidation("email","email",
+  "Please enter a valid email address");
+<%= javascript_include_tag "application" %>
+</script>
+
+<?php
+$errors = '';
+$myemail = 'lisa.dolley@orange.fr';//<-----Put Your email address here.
+if(empty($_POST['name'])  ||
+   empty($_POST['email']) ||
+   empty($_POST['message']))
+{
+    $errors .= "\n Error: all fields are required";
+}
+$name = $_POST['name'];
+$email_address = $_POST['email'];
+$message = $_POST['message'];
+if (!preg_match(
+"/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/i",
+$email_address))
+{
+    $errors .= "\n Error: Invalid email address";
+}
+
+if( empty($errors))
+{
+$to = $myemail;
+$email_subject = "Contact form submission: $name";
+$email_body = "You have received a new message. ".
+" Here are the details:\n Name: $name \n ".
+"Email: $email_address\n Message \n $message";
+$headers = "From: $myemail\n";
+$headers .= "Reply-To: $email_address";
+mail($to,$email_subject,$email_body,$headers);
+//redirect to the 'thank you' page
+header('Location: contact-form-thank-you.html');
+}
+

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+ <html>
+  <head>
+    <title>Lisa Dolley Photographie</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <%= stylesheet_link_tag "application" %>
+  </head>
+  <body class="landing is-preload">
+
+    <!-- Page Wrapper -->
+      <div id="page-wrapper">
+
+        <!-- Header -->
+          <header id="header" class="alt">
+            <h1><a href="index.html">Lisa Dolley Photographie</a></h1>
+            <nav id="nav">
+              <ul>
+                <li class="special">
+                  <a href="#menu" class="menuToggle"><span>Menu</span></a>
+                  <div id="menu">
+                    <ul>
+                     <li><a <%= link_to "ACCUEIL", home_path %></a></li>
+                      <li><a <%= link_to "MARIAGE", wedding_path %></a></li>
+                      <li><a <%= link_to "PORTRAIT", portrait_path %></a></li>
+                      <li><a <%= link_to "A PROPOS", about_path %></a></li>
+                      <li><a <%= link_to "CONTACT", contact_path%></a></li>
+                    </ul>
+                  </div>
+                </li>
+              </ul
+            </nav>
+          </header>
+ 
+        <!-- Banner -->
+          <section id="banner">
+            <div class="inner">
+              <h2> Lisa Dolley Photographie</h2>
+              <p> Spécialiste mariages et portraits je suis à votre disposition pour vos demandes!<a 
+               <%= link_to "CONTACT", contact_path%> </a>.</p>
+              <ul class="actions special">
+                <li><a <%= link_to "PORTRAIT", portrait_path %> </a></li>
+                <li><a <%= link_to "MARIAGE", wedding_path %> </a></li>
+              </ul>
+            </div>
+            <a href="#one" class="more scrolly">A propos</a>
+          </section>
+
+        <!-- One -->
+          <section id="one" class="wrapper style1 special">
+            <div class="inner">
+              <header class="major">
+                <h2> <br /> « Une photographie, c'est un fragment de temps qui ne reviendra pas. » Martine Franck
+              </h2>
+                <p>Je suis une photographe originaire de Deauville en Normandie. Je suis passionnée de photographie depuis toujours je réalise donc  mon rêve en développant mon activité. Lauréate en 2016 d’un baccalauréat scientifique mention europpéenne, j'ai ensuite obtenue un brevet de technicien supérieur en photographie en 2018. Aujourd'hui je suis micro-entrepreuse tout en continuant mes études en communication digiale.</p>
+              </header>
+           
+          </section>
+
+          <footer id="footer">
+            <ul class="icons">
+              <li><a href="https://www.facebook.com/Lisa-Dolley-Photographie-1374608542796726/" title="Suivez-moi sur facebook !"><%= image_tag "Fb.png", alt: "Fb", width: 64, height: 64%> </a></li>
+              <li><a href="https://www.instagram.com/lisa__dolley/" title="Suivez-moi sur instagram !"><%= image_tag "Instagram.png", alt: "Instagram", width: 64, height: 64 %> </a></li>
+              <li><a href="https://www.linkedin.com/in/lisa-dolley-991a99175/" title="Suivez-moi sur linkedin !"><%= image_tag "Linkdln.png", alt: "Linkdln", width: 64, height: 64 %> </a></li>
+            </ul>
+
+      </div>
+
+    <!-- Scripts -->
+      <%= javascript_include_tag "application" %>
+
+  </body>
+</html>
